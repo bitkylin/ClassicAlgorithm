@@ -1,4 +1,4 @@
-package cc.bitky.niuke.two;
+package cc.bitky.niuke.p2;
 
 import cc.bitky.sort.KySort;
 

@@ -9,25 +9,25 @@ public class MergeSort1 implements KySort {
 
     private void sort(int[] a, int left, int right, int[] temp) {
         if (left >= right) return;
-        int middle = (left + right) / 2;
-        sort(a, left, middle, temp);
-        sort(a, middle + 1, right, temp);
-        merge(a, left, middle, right, temp);
+        int mid = (left + right) / 2;
+        sort(a, left, mid, temp);
+        sort(a, mid + 1, right, temp);
+        merge(a, left, mid, right, temp);
     }
 
-    private void merge(int[] a, int left, int middle, int right, int[] temp) {
+    private void merge(int[] a, int left, int mid, int right, int[] temp) {
         int k = left;
         int i = left;
-        int j = middle + 1;
+        int j = mid + 1;
 
-        while (i <= middle && j <= right) {
+        while (i <= mid && j <= right) {
             if (a[i] < a[j]) {
                 temp[k++] = a[i++];
             } else {
                 temp[k++] = a[j++];
             }
         }
-        while (i <= middle) {
+        while (i <= mid) {
             temp[k++] = a[i++];
         }
         while (j <= right) {

@@ -1,4 +1,4 @@
-package cc.bitky.niuke.one;
+package cc.bitky.niuke.p1;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

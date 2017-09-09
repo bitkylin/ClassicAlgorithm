@@ -1,6 +1,6 @@
 package cc.bitky.sort;
 
-import cc.bitky.sort.Heap.HeapSort1;
+import cc.bitky.sort.shell.ShellSort1;
 
 public class SortMain {
     private static KySort sorter;
@@ -11,7 +11,7 @@ public class SortMain {
     }
 
     public static void main(String[] args) {
-        setSorter(new HeapSort1());
+        setSorter(new ShellSort1());
         SortMain arr;
         arr = new SortMain(5, 4, 3, 2, 1, 0);
         arr.display();
