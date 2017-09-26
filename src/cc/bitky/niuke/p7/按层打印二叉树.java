@@ -8,7 +8,16 @@ import java.util.List;
 //给定二叉树的根结点root，请返回打印结果，结果按照每一层一个数组进行储存，所有数组的顺序按照层数从上往下，且每一层的数组内元素按照从左往右排列。保证结点数小于等于500。
 public class 按层打印二叉树 {
 
-    public int[][] printTree(TreeNode root) {
+    public static void main(String[] args) {
+        TreeNode node = new TreeNode(5);
+        node.left = new TreeNode(1);
+        node.right = new TreeNode(2);
+        node.left.left = new TreeNode(11);
+        node.right.left = new TreeNode(21);
+        printTree(node);
+    }
+
+    public static void printTree(TreeNode root) {
         LinkedList<TreeNode> nodes = new LinkedList<>();
         nodes.offer(root);
         TreeNode last = root;
@@ -25,16 +34,22 @@ public class 按层打印二叉树 {
                 last = nodes.peekLast();
             }
         }
-        int[][] ints = new int[lists.size()][];
-        for (int j = 0; j < lists.size(); j++) {
-            List<Integer> list = lists.get(j);
-            int[] ints1 = new int[list.size()];
-            for (int i = 0; i < list.size(); i++) {
-                ints1[i] = list.get(i);
+        for (List<Integer> list : lists) {
+            for (Integer integer : list) {
+                System.out.print(integer + " ");
             }
-            ints[j] = ints1;
+            System.out.println();
         }
-        return ints;
+//        int[][] ints = new int[lists.size()][];
+//        for (int j = 0; j < lists.size(); j++) {
+//            List<Integer> list = lists.get(j);
+//            int[] ints1 = new int[list.size()];
+//            for (int i = 0; i < list.size(); i++) {
+//                ints1[i] = list.get(i);
+//            }
+//            ints[j] = ints1;
+//        }
+//        return ints;
     }
 
     static class TreeNode {
