@@ -3,7 +3,7 @@ package cc.bitky.niuke.p12;
 import java.util.Scanner;
 
 //求最长子序列
-public class Lis {
+public class 最长递增子序列 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int n = scanner.nextInt();
@@ -29,5 +29,22 @@ public class Lis {
             }
         }
         System.out.println(value);
+    }
+
+    public int getLIS(int[] A, int n) {
+        int[] max = new int[n];
+        if (n > 0) max[0] = 1;
+
+        for (int i = 1; i < max.length; i++) {
+            max[i] = 1;
+            for (int j = 0; j < i; j++) {
+                if (A[j] < A[i] && max[j] + 1 > max[i]) max[i] = max[j] + 1;
+            }
+        }
+        int val = 0;
+        for (int i : max) {
+            if (val < i) val = i;
+        }
+        return val;
     }
 }

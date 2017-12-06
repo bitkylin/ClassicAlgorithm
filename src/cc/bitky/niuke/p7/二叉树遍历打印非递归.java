@@ -1,8 +1,8 @@
 package cc.bitky.niuke.p7;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
-import java.util.Stack;
 
 
 public class 二叉树遍历打印非递归 {
@@ -30,27 +30,27 @@ public class 二叉树遍历打印非递归 {
     }
 
     private void pre(TreeNode root, List<Integer> list) {
-        Stack<TreeNode> nodes = new Stack<>();
-        nodes.push(root);
-        while (!nodes.isEmpty()) {
-            TreeNode node = nodes.pop();
+        LinkedList<TreeNode> stack = new LinkedList<>();
+        stack.push(root);
+        while (!stack.isEmpty()) {
+            TreeNode node = stack.pop();
             list.add(node.val);
             if (node.right != null)
-                nodes.push(node.right);
+                stack.push(node.right);
             if (node.left != null)
-                nodes.push(node.left);
+                stack.push(node.left);
         }
     }
 
     private void mid(TreeNode root, List<Integer> list) {
-        Stack<TreeNode> nodes = new Stack<>();
+        LinkedList<TreeNode> stack = new LinkedList<>();
         TreeNode cur = root;
-        while (cur != null || !nodes.isEmpty()) {
+        while (cur != null || !stack.isEmpty()) {
             if (cur != null) {
-                nodes.push(cur);
+                stack.push(cur);
                 cur = cur.left;
             } else {
-                TreeNode parent = nodes.pop();
+                TreeNode parent = stack.pop();
                 list.add(parent.val);
                 cur = parent.right;
             }
@@ -58,10 +58,19 @@ public class 二叉树遍历打印非递归 {
     }
 
     private void post(TreeNode root, List<Integer> list) {
-        if (root == null) return;
-        post(root.left, list);
-        post(root.right, list);
-        list.add(root.val);
+        LinkedList<TreeNode> stack = new LinkedList<>();
+        LinkedList<TreeNode> res = new LinkedList<>();
+        stack.push(root);
+        while (!stack.isEmpty()) {
+            TreeNode node = stack.pop();
+            res.push(node);
+            if (node.left != null)
+                stack.push(node.left);
+            if (node.right != null)
+                stack.push(node.right);
+        }
+        while (!res.isEmpty())
+            list.add(res.pop().val);
     }
 
     static class TreeNode {

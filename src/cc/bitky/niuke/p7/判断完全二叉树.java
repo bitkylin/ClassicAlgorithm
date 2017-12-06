@@ -3,9 +3,9 @@ package cc.bitky.niuke.p7;
 import java.util.LinkedList;
 
 public class 判断完全二叉树 {
-    boolean result = true;
-    boolean leaf = false;
-    TreeNode last = null;
+    private boolean result = true;
+    private boolean leaf = false;
+    private TreeNode last = null;
 
     public static void main(String[] args) {
         TreeNode node = new TreeNode();
